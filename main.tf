@@ -1,12 +1,12 @@
 resource "aws_ecs_cluster" "helloworld" {
-  name = "hello-world"
+  name = "${var.ecsName}"
   capacity_providers = ["FARGATE"]
 }
 
 
 
 resource "aws_ecr_repository" "helloworldrepo" {
-  name                 = "helloworld-repo"
+  name                 = "${var.ecrName}"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
