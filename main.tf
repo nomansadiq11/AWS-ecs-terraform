@@ -48,3 +48,20 @@ resource "aws_ecr_repository_policy" "foopolicy" {
 }
 EOF
 }
+
+
+
+resource "aws_ecs_task_definition" "service" {
+  family                = "${var.ecsName}"
+  container_definitions = "${file("task-definition/service.json")}"
+
+  volume {
+    name      = "service-storage"
+    host_path = "/ecs/service-storage"
+  }
+
+  placement_constraints {
+    type       = "memberOf"
+    expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+  }
+}
