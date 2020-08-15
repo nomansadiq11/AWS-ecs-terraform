@@ -27,16 +27,16 @@ resource "aws_internet_gateway" "IGW" {
 }
 
 
-resource "aws_route_table" "RT" {
-  vpc_id = aws_vpc.main_VPC.id
+# resource "aws_route_table" "RT" {
+#   vpc_id = aws_vpc.main_VPC.id
 
-  route {
-    cidr_block = "10.100.0.0/24"
-    gateway_id = aws_internet_gateway.IGW.id
-  }
+#   route {
+#     cidr_block = "10.100.0.0/24"
+#     gateway_id = aws_internet_gateway.IGW.id
+#   }
 
 
-  tags = {
-    Name = "Learning"
-  }
-}
+#   tags = {
+#     Name = "Learning"
+#   }
+# }
